@@ -1,3 +1,20 @@
+/**
+ * NavMenu Component
+ *
+ * Menu navigasi untuk tampilan mobile, mendukung link navigasi
+ * dan menampilkan informasi user atau tombol login.
+ *
+ * @component
+ * @param {Object} props
+ * @param {boolean} props.isOpen - Status terbuka/tutup menu
+ * @param {function} props.onClose - Menutup menu
+ * @param {string|null} props.userEmail - Email user aktif
+ * @param {function} props.onLogout - Logout user
+ * @param {function} props.onOpenLogin - Membuka halaman login
+ * @param {boolean} props.isAuthenticated - Status login user
+ * @returns {JSX.Element}
+ */
+
 import { NavLink } from "react-router-dom";
 import "./NavMenu.css";
 import UserInfo from "./UserInfo";
@@ -38,14 +55,14 @@ function NavMenu({
       <div className="mobile-auth-section">
         {isAuthenticated && userEmail ? (
           <div className="mobile-user-info-wrapper">
-             <UserInfo userEmail={userEmail} onLogout={onLogout} isMobile={true} />
+            <UserInfo userEmail={userEmail} onLogout={onLogout} isMobile />
           </div>
         ) : (
           <div className="login-btn-mobile">
             <button
               onClick={() => {
-                onClose();
-                onOpenLogin();
+                onClose()
+                onOpenLogin()
               }}
               className="navbar-login-btn"
             >
