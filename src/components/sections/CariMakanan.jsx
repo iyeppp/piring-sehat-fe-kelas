@@ -4,6 +4,13 @@ import { searchFoodsByName } from '../../services/makananService'
 
 const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
+/**
+ * Halaman pencarian makanan.
+ * Menyediakan pencarian dengan debounce, navigasi huruf, dan pengelompokan hasil berdasarkan huruf pertama.
+ *
+ * - `searchTerm` dipakai untuk input pengguna, dan `debouncedSearchTerm` untuk menunda pemanggilan API.
+ * - Saat tidak ada query, komponen memuat daftar makanan lengkap (limit tertentu) lalu mengelompokkannya.
+ */
 function CariMakanan() {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('') // 🆕 DEBOUNCE STATE
@@ -26,6 +33,9 @@ function CariMakanan() {
     loadAllFoods()
   }, [])
 
+  /**
+   * Muat semua makanan (dipakai saat tidak ada query atau saat inisialisasi).
+   */
   const loadAllFoods = async () => {
     try {
       setIsLoading(true)
@@ -41,6 +51,10 @@ function CariMakanan() {
     }
   }
 
+  /**
+   * Mengelompokkan array makanan berdasarkan huruf pertama nama.
+   * @param {Array} foods Array objek makanan.
+   */
   const groupFoodsByLetter = (foods) => {
     const grouped = {}
     
@@ -59,6 +73,9 @@ function CariMakanan() {
     }
   }
 
+  /**
+   * Memanggil API pencarian dengan query debounced.
+   */
   const fetchDebouncedFoods = async () => {
     try {
       setIsLoading(true)
