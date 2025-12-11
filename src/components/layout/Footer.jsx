@@ -30,8 +30,6 @@ function Footer() {
             <li><a href="#" onClick={(e) => e.preventDefault()}>Fatih Dwi Anggoro</a></li>
             <li><a href="#" onClick={(e) => e.preventDefault()}>Muhammad Naufal Zuhdi</a></li>
             <li><a href="#" onClick={(e) => e.preventDefault()}>Rionaldo Benedictus Purba</a></li>
-            <li><a href="#" onClick={(e) => e.preventDefault()}>Frans Malindo Ginting</a></li>
-            <li><a href="#" onClick={(e) => e.preventDefault()}>Farid Sani Ahdaputra</a></li>
           </ul>
         </div>
 
