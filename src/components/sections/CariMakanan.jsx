@@ -123,8 +123,16 @@ function CariMakanan() {
     return Object.keys(groupedFoods).sort()
   }
 
+  const handleSearchKeyDown = (e) => {
+    if (e.key === ' ') {
+      e.preventDefault()
+      setSearchTerm((prev) => prev + ' ')
+    }
+  }
+
   const handleSearch = (e) => {
     e.preventDefault()
+
     const term = searchTerm.trim()
 
     if (term === '') {
@@ -226,6 +234,7 @@ function CariMakanan() {
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleSearchKeyDown}
                 placeholder="Cari Makanan"
                 className="search-input"
               />
